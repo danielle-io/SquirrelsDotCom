@@ -12,6 +12,14 @@
 </head>
 <body class="checkout-page">
 
+<div class="processing" id="processing">
+  <div class="processing-inner">
+    <div class="proc-squirrel">🐿️</div>
+    <div class="proc-bar"><span></span></div>
+    <p class="proc-text" id="procText">Contacting payment processor…</p>
+  </div>
+</div>
+
 <div class="reveal-wrap">
   <div class="wrap narrow">
 
@@ -20,8 +28,10 @@
       <h1>Your cart is empty, and that's a good thing.</h1>
       <p class="big">Squirrels aren't for sale. They never were.</p>
       <p>You got sent here on purpose. If you came from a wildlife rehabber's stream and asked to buy one of the babies, thank you for loving them. Here's the part that actually matters.</p>
+      <button class="btn btn-primary btn-lg keep-reading" id="keepReading">Okay, tell me why 👇</button>
     </div>
 
+    <div class="more" id="more">
     <section class="block">
       <h2>Why squirrels make lousy pets</h2>
 
@@ -100,10 +110,10 @@
         </li>
 
         <li class="reason">
-          <span class="reason-icon">🦠</span>
+          <span class="reason-icon">📋</span>
           <div>
-            <h3>Rabies and friends</h3>
-            <p>Squirrels rarely carry rabies, but they do carry leptospirosis, salmonella, ringworm, and a healthy load of fleas, ticks, and mites — and there's no approved rabies vaccine for them, so a bite can trigger a public health headache.</p>
+            <h3>Legal or not, care is hard to come by</h3>
+            <p>Where you live decides whether owning one is outright banned, permit-only, or a gray area, and most people never check until something goes wrong. Even where it's allowed, exotic vets who will see a squirrel are few and far between, so routine care turns into phone calls and long drives.</p>
           </div>
         </li>
 
@@ -200,11 +210,11 @@
 
     <p class="disclaimer">This site is a joke with a point. Nothing on it is for sale, and nothing ever will be.</p>
 
+    </div>
+
   </div>
 </div>
 
-<script>
-  try { localStorage.removeItem('sq_cart'); } catch (e) {}
-</script>
+<script src="checkout.js"></script>
 </body>
 </html>
