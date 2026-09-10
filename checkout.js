@@ -54,3 +54,30 @@ keepBtn.addEventListener('click', () => {
     more.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 120);
 });
+
+const copyBtn = document.getElementById('copyLink');
+if (copyBtn){
+  const url = 'https://tinyurl.com/Squirrelsforsale';
+  copyBtn.addEventListener('click', async () => {
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(url);
+      ok = true;
+    } catch (e) {
+      const t = document.createElement('textarea');
+      t.value = url;
+      t.style.position = 'fixed';
+      t.style.opacity = '0';
+      document.body.appendChild(t);
+      t.select();
+      try { ok = document.execCommand('copy'); } catch (e2) {}
+      t.remove();
+    }
+    copyBtn.textContent = ok ? 'Copied! 🌰' : 'Press to copy';
+    copyBtn.classList.toggle('copied', ok);
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy link';
+      copyBtn.classList.remove('copied');
+    }, 2000);
+  });
+}

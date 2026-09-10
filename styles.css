@@ -561,3 +561,21 @@ section{padding:62px 0}
   a{color:#ff9dc0}
   .checklist li{border-left-color:var(--mint)}
 }
+.share-intro{text-align:center;color:#7a5a68;max-width:52ch;margin:0 auto 22px}
+.share-box{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;
+  background:#fff;border-radius:24px;padding:20px;box-shadow:var(--shadow);
+}
+.share-box code{
+  font-family:'Nunito',monospace;font-weight:800;font-size:1rem;
+  color:var(--pink-deep);background:#fff0f6;
+  padding:12px 18px;border-radius:999px;word-break:break-all;
+}
+#copyLink.copied{background:linear-gradient(135deg,var(--mint),#5ec9a8);box-shadow:0 6px 0 rgba(94,201,168,.4)}
+.share-fine{margin-top:8px}
+.share-fine a{color:#fff;font-weight:800}
+@media (prefers-color-scheme: dark){
+  .share-intro{color:#c5b3c0}
+  .share-box{background:#241d2b}
+  .share-box code{background:#332430;color:#ff9dc0}
+}
