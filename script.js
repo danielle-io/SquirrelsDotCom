@@ -1,10 +1,12 @@
 const PRODUCTS = [
   { id:'nutmeg',  name:'Nutmeg',   emoji:'🐿️', price:249.99, badge:'Best Seller', desc:'Eastern gray. Extremely opinionated. Will judge your snacks.' },
-  { id:'biscuit', name:'Biscuit',  emoji:'🐿️', price:329.99, badge:'Premium',     desc:'Red squirrel energy in a tiny body. 400% chaos per gram.' },
+  { id:'biscuit', name:'Biscuit',  emoji:'🐿️', price:329.99, badge:'Premium',     desc:'Eastern gray. Tiny paws, huge personality, absolutely no respect for personal space.' },
   { id:'acorn',   name:'Sir Acorn',emoji:'🐿️', price:189.99, badge:'Budget Pick', desc:'Slightly used. Missing one whisker. Big personality.' },
   { id:'pip',     name:'Pip',      emoji:'🐿️', price:279.99, badge:'New',         desc:'Baby! So small! Definitely not a huge 20-year commitment!' },
-  { id:'waffles', name:'Waffles',  emoji:'🐿️', price:399.99, badge:'Deluxe',      desc:'Flying squirrel. Yes, it glides. No, you cannot catch it.' },
+  { id:'waffles', name:'Waffles',  emoji:'🐿️', price:399.99, badge:'Deluxe',      desc:'Flying squirrel. No, not a sugar glider.' },
   { id:'chonk',   name:'Big Chonk',emoji:'🐿️', price:459.99, badge:'Limited',     desc:'Absolute unit. Ships in a reinforced box. Good luck.' },
+  { id:'frampton',name:'Frampton', emoji:'🐿️', price:349.99, badge:'Pre-Order',   desc:'Coming soon with his well-loved Frammock. Pre-chewed for maximum comfort.', action:'Pre-Order' },
+  { id:'mystery', name:'Mystery Squirrel',emoji:'🎁',price:299.99,badge:'Surprise',desc:"You won't know what you're getting. Could be sweet. Could be chaos. Probably both.", action:'Add Mystery Box' },
 ];
 
 const CART_KEY = 'sq_cart';
@@ -39,7 +41,7 @@ function renderProducts(){
         <p>${p.desc}</p>
         <div class="price-row">
           <span class="price">${money(p.price)}</span>
-          <button class="add-btn" data-id="${p.id}">Add to Cart</button>
+          <button class="add-btn" data-id="${p.id}">${p.action || 'Add to Cart'}</button>
         </div>
       </div>
     </article>
