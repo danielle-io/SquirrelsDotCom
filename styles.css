@@ -445,6 +445,7 @@ section{padding:62px 0}
   background:linear-gradient(135deg,var(--mint),var(--sky));
   padding:6px 15px;border-radius:999px;box-shadow:0 4px 0 rgba(127,216,190,.4);
 }
+.rehabber-card > p.credential{color:#0c3f4a}
 .rehabber-card > p{color:#7a5a68;max-width:56ch;margin:12px auto 0}
 .three-r{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:16px 0 6px}
 .r-pill{
@@ -460,6 +461,7 @@ section{padding:62px 0}
   max-width:52ch;box-shadow:0 6px 0 rgba(255,179,122,.4);
 }
 .oop-banner strong{color:#5a2f12}
+.rehabber-card > p.oop-banner{color:#6b3f1f}
 .gallery-intro{text-align:center;color:#7a5a68;max-width:56ch;margin:0 auto 26px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
 .shot{
@@ -554,7 +556,7 @@ section{padding:62px 0}
   .proc-text{color:#ffe6f1}
   .proc-bar{background:#241d2b;box-shadow:inset 0 2px 6px rgba(0,0,0,.5)}
   .closing{background:linear-gradient(135deg,#1e3329,#1c2a38);color:#bfe6d5}
-  .oop-banner{color:#3a1f08}
+  .rehabber-card > p.oop-banner{color:#5a2f12}
   .squiggle{color:#ff9dc0}
   .price,.total-row strong,.line-price,.review cite,.reveal-card .big{color:#ff9dc0}
   .logo-text em{color:#ff9dc0}
