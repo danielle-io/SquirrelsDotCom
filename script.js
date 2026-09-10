@@ -1,0 +1,174 @@
+const PRODUCTS = [
+  { id:'nutmeg',  name:'Nutmeg',   emoji:'🐿️', price:249.99, badge:'Best Seller', desc:'Eastern gray. Extremely opinionated. Will judge your snacks.' },
+  { id:'biscuit', name:'Biscuit',  emoji:'🐿️', price:329.99, badge:'Premium',     desc:'Red squirrel energy in a tiny body. 400% chaos per gram.' },
+  { id:'acorn',   name:'Sir Acorn',emoji:'🐿️', price:189.99, badge:'Budget Pick', desc:'Slightly used. Missing one whisker. Big personality.' },
+  { id:'pip',     name:'Pip',      emoji:'🐿️', price:279.99, badge:'New',         desc:'Baby! So small! Definitely not a huge 20-year commitment!' },
+  { id:'waffles', name:'Waffles',  emoji:'🐿️', price:399.99, badge:'Deluxe',      desc:'Flying squirrel. Yes, it glides. No, you cannot catch it.' },
+  { id:'chonk',   name:'Big Chonk',emoji:'🐿️', price:459.99, badge:'Limited',     desc:'Absolute unit. Ships in a reinforced box. Good luck.' },
+];
+
+const CART_KEY = 'sq_cart';
+let cart = loadCart();
+
+const grid       = document.getElementById('productGrid');
+const drawer     = document.getElementById('drawer');
+const backdrop   = document.getElementById('backdrop');
+const cartBtn    = document.getElementById('cartBtn');
+const cartCount  = document.getElementById('cartCount');
+const cartItems  = document.getElementById('cartItems');
+const cartTotal  = document.getElementById('cartTotal');
+const checkout   = document.getElementById('checkoutBtn');
+const fly        = document.getElementById('fly');
+
+function loadCart(){
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
+  catch { return {}; }
+}
+function saveCart(){
+  try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch {}
+}
+const money = n => '$' + n.toFixed(2);
+
+function renderProducts(){
+  grid.innerHTML = PRODUCTS.map(p => `
+    <article class="card">
+      <div class="card-img">${p.emoji}</div>
+      <div class="card-body">
+        <span class="badge">${p.badge}</span>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price-row">
+          <span class="price">${money(p.price)}</span>
+          <button class="add-btn" data-id="${p.id}">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderCart(){
+  const ids = Object.keys(cart);
+  const count = ids.reduce((s,id) => s + cart[id], 0);
+  cartCount.textContent = count;
+  checkout.disabled = count === 0;
+
+  if (!ids.length){
+    cartItems.innerHTML = `<div class="empty-cart"><span>🌰</span><p>Your cart is empty.<br>Go pick out a squirrel!</p></div>`;
+    cartTotal.textContent = money(0);
+    return;
+  }
+
+  let total = 0;
+  cartItems.innerHTML = ids.map(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    const qty = cart[id];
+    total += p.price * qty;
+    return `
+      <div class="line">
+        <div class="line-img">${p.emoji}</div>
+        <div class="line-info">
+          <h4>${p.name}</h4>
+          <small>${money(p.price)} each</small>
+          <div class="qty">
+            <button data-dec="${id}" aria-label="Decrease">−</button>
+            <span>${qty}</span>
+            <button data-inc="${id}" aria-label="Increase">+</button>
+          </div>
+        </div>
+        <div class="line-price">${money(p.price * qty)}</div>
+      </div>`;
+  }).join('');
+  cartTotal.textContent = money(total);
+}
+
+function flyToCart(btn, emoji){
+  const start = btn.getBoundingClientRect();
+  const end   = cartBtn.getBoundingClientRect();
+
+  fly.textContent = emoji;
+  fly.style.transition = 'none';
+  fly.style.left = start.left + start.width/2 - 20 + 'px';
+  fly.style.top  = start.top  + start.height/2 - 20 + 'px';
+  fly.style.transform = 'scale(1) rotate(0deg)';
+  fly.classList.add('go');
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fly.style.transition = 'left .85s cubic-bezier(.5,-0.4,.5,1), top .85s cubic-bezier(.5,-0.4,.5,1), transform .85s ease-in, opacity .2s ease .7s';
+    fly.style.left = end.left + end.width/2 - 16 + 'px';
+    fly.style.top  = end.top  + end.height/2 - 16 + 'px';
+    fly.style.transform = 'scale(.3) rotate(540deg)';
+    fly.style.opacity = '0';
+  }));
+
+  setTimeout(() => {
+    fly.classList.remove('go');
+    fly.style.opacity = '';
+    cartBtn.classList.add('bump');
+    acornBurst(end.left + end.width/2, end.top + end.height/2);
+    setTimeout(() => cartBtn.classList.remove('bump'), 460);
+  }, 860);
+}
+
+function acornBurst(x, y){
+  const bits = ['🌰','🍂','🌰','✨','🍁','🌰'];
+  bits.forEach((b, i) => {
+    const el = document.createElement('div');
+    el.className = 'pop';
+    el.textContent = b;
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    const ang = (Math.PI * 2 * i) / bits.length + Math.random();
+    const dist = 50 + Math.random() * 45;
+    el.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+    el.style.setProperty('--dy', (Math.sin(ang) * dist - 25) + 'px');
+    el.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 950);
+  });
+}
+
+function addToCart(id, btn){
+  cart[id] = (cart[id] || 0) + 1;
+  saveCart();
+  renderCart();
+
+  const p = PRODUCTS.find(x => x.id === id);
+  flyToCart(btn, p.emoji);
+
+  const original = btn.textContent;
+  btn.textContent = 'Added! ✓';
+  btn.classList.add('added');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('added'); }, 1100);
+}
+
+function openDrawer(){ drawer.classList.add('open'); backdrop.classList.add('open'); }
+function closeDrawer(){ drawer.classList.remove('open'); backdrop.classList.remove('open'); }
+
+grid.addEventListener('click', e => {
+  const btn = e.target.closest('.add-btn');
+  if (btn) addToCart(btn.dataset.id, btn);
+});
+
+cartItems.addEventListener('click', e => {
+  const inc = e.target.dataset.inc;
+  const dec = e.target.dataset.dec;
+  if (inc){ cart[inc]++; }
+  else if (dec){ cart[dec]--; if (cart[dec] <= 0) delete cart[dec]; }
+  else return;
+  saveCart();
+  renderCart();
+});
+
+cartBtn.addEventListener('click', openDrawer);
+document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+backdrop.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+checkout.addEventListener('click', () => {
+  checkout.textContent = 'Processing…';
+  checkout.disabled = true;
+  setTimeout(() => { window.location.href = 'checkout.html'; }, 900);
+});
+
+renderProducts();
+renderCart();

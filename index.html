@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Squirrel Boutique — Premium Squirrels Delivered</title>
+<meta name="description" content="Adorable squirrels, ready to ship. Add to cart today!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐿️</text></svg>">
+</head>
+<body>
+
+<div class="announce">🍂 FALL SALE — Free acorn starter kit with every order! 🍂</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#">
+      <span class="logo-mark">🐿️</span>
+      <span class="logo-text">The Squirrel <em>Boutique</em></span>
+    </a>
+    <nav class="nav">
+      <a href="#shop">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+      🛒 <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Ethically Confusing Since 2026</p>
+      <h1>Bring home a <span class="squiggle">squirrel</span> today.</h1>
+      <p class="lede">Hand-raised. Ridiculously cute. Available in several chaotic personalities. Ships in a small box with a small blanket.</p>
+      <a class="btn btn-primary btn-lg" href="#shop">Shop Squirrels →</a>
+      <ul class="trust">
+        <li>✅ 100% Fluffy</li>
+        <li>✅ Free Shipping</li>
+        <li>✅ 30-Day Returns*</li>
+      </ul>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-squirrel">🐿️</div>
+      <div class="float-acorn a1">🌰</div>
+      <div class="float-acorn a2">🍂</div>
+      <div class="float-acorn a3">🌰</div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section id="shop">
+    <h2 class="section-title">Our Squirrels</h2>
+    <p class="section-sub">Every squirrel is unique. So is the state law you'd be breaking.</p>
+    <div class="grid" id="productGrid"></div>
+  </section>
+
+  <section id="why" class="why">
+    <h2 class="section-title">Why Shop With Us?</h2>
+    <div class="why-grid">
+      <div class="why-card"><span>📦</span><h3>Fast Shipping</h3><p>Your squirrel arrives faster than you can google "is this legal."</p></div>
+      <div class="why-card"><span>🌰</span><h3>Acorn Included</h3><p>One (1) acorn. That should cover it, right? Right?</p></div>
+      <div class="why-card"><span>💕</span><h3>Instant Bond</h3><p>They'll love you forever. Or bite you. It's a coin flip.</p></div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <h2 class="section-title">Happy Customers</h2>
+    <div class="review-grid">
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>"He chewed through my drywall, my couch, and my marriage. 10/10 would order again."</p>
+        <cite>— Dave R.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>"I was NOT prepared for the teeth. They never stop growing. Nobody told me that."</p>
+        <cite>— Marissa T.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Turns out squirrels need vets that don't exist. Anyway, please read the checkout page."</p>
+        <cite>— Every Rehabber Ever</cite>
+      </blockquote>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-logo">🐿️ The Squirrel Boutique</p>
+    <p class="fine">*Returns not accepted. Wildlife is not a product. Please proceed to checkout.</p>
+  </div>
+</footer>
+
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head">
+    <h2>Your Cart</h2>
+    <button class="close-x" id="closeDrawer" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Proceed to Checkout</button>
+    <p class="foot-note">Secure checkout · You will not be charged</p>
+  </div>
+</aside>
+
+<div class="fly" id="fly" aria-hidden="true"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
