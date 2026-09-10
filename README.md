@@ -4,7 +4,7 @@ A fake squirrel store that exists to redirect people who ask to buy wild squirre
 
 Visitors browse the "shop," add a squirrel to the cart, hit checkout, and instead of a payment form they land on a page explaining why squirrels don't belong in houses, what to do if they find a baby one, and how to support licensed rehabbers.
 
-Support KL: https://linktr.ee/cookiekli
+Support KL: https://linktr.ee/cookieKL
 
 ## Editing
 
