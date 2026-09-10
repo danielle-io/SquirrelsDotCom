@@ -1,4 +1,5 @@
 :root{
+  color-scheme:light dark;
   --pink:#ff8fb1;
   --pink-deep:#f3628d;
   --peach:#ffb37a;
@@ -409,7 +410,11 @@ section{padding:62px 0}
 .reason:nth-child(6n+6) .reason-icon::before{background:linear-gradient(135deg,var(--grape),#8f5eff)}
 .reason h3{margin:0 0 6px;font-size:1.15rem;color:var(--bark)}
 .reason p{margin:0;color:#7a5a68;font-size:.97rem}
-@media(max-width:520px){.reason{flex-direction:column;gap:10px}}
+@media(max-width:520px){
+  .reason{flex-direction:column;gap:10px;padding:24px 20px 22px}
+  .reason-icon::before{top:-6px;left:-6px}
+  .reason-list{padding-left:4px;padding-right:4px}
+}
 
 .checklist{list-style:none;padding:0;margin:0}
 .checklist li{
@@ -497,4 +502,62 @@ section{padding:62px 0}
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+}
+
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme: dark){
+  body{
+    color:#f2e7ee;
+    background:
+      radial-gradient(1000px 600px at 10% -5%, #3a2130 0%, transparent 55%),
+      radial-gradient(900px 500px at 95% 8%, #1e2f3d 0%, transparent 55%),
+      radial-gradient(800px 600px at 50% 100%, #3a2f1f 0%, transparent 60%),
+      #17131c;
+  }
+  h1,h2,h3,.logo,.logo-text{color:#ffe6f1}
+  .hero h1,.section-title,.card h3,.why-card h3,.reason h3,.rehabber-card h3,
+  .reveal-card h1,.block h2,.line-info h4,.total-row,.drawer-head h2{color:#ffe6f1}
+  .lede,.section-sub,.card p,.why-card p,.reason p,.checklist li,.way p,
+  .gallery-intro,.reveal-card p,.rehabber-card > p,.shot figcaption,
+  .review p,.line-info small,.empty-cart,.foot-note,.link-note,.photo-credit,
+  .disclaimer{color:#c5b3c0}
+
+  .site-header{background:rgba(23,19,28,.9);border-bottom-color:rgba(255,143,177,.25)}
+  .nav a{color:#f0dce7}
+  .hero::before{background-image:radial-gradient(rgba(255,143,177,.18) 2px, transparent 2px)}
+  .hero-art::before{background:radial-gradient(circle,#4a2436 0%,#2c1c28 45%,transparent 70%)}
+
+  .card,.why-card,.review,.reason,.checklist li,.way,.shot,.line,
+  .trust li,.r-pill,.reveal-card,.qty button{
+    background:#241d2b;border-color:#241d2b;
+  }
+  .reveal-card{border-color:#2f2637}
+  .shot img,.rehabber-photo img{border-color:#2f2637}
+  .rehabber-card{background:linear-gradient(160deg,#241d2b,#2c1f2b 60%,#1e2733);border-color:#3a2d3f}
+  .drawer{background:#1b1621;border-left-color:var(--pink)}
+  .drawer-foot{border-top-color:rgba(255,143,177,.3)}
+  .btn-ghost{background:#241d2b;color:#ffe6f1}
+  .reason-icon{background:linear-gradient(140deg,#332430,#22303c)}
+  .line-img{background:linear-gradient(140deg,#332430,#22303c)}
+  .trust li{color:#f0dce7}
+  .r-pill{color:#ffe6f1}
+
+  .card:nth-child(6n+1) .card-img{background:linear-gradient(140deg,#3d2733,#33202c)}
+  .card:nth-child(6n+2) .card-img{background:linear-gradient(140deg,#22303c,#1c2833)}
+  .card:nth-child(6n+3) .card-img{background:linear-gradient(140deg,#3b3020,#31281a)}
+  .card:nth-child(6n+4) .card-img{background:linear-gradient(140deg,#20352e,#1a2b26)}
+  .card:nth-child(6n+5) .card-img{background:linear-gradient(140deg,#2e2740,#261f36)}
+  .card:nth-child(6n+6) .card-img{background:linear-gradient(140deg,#3d2a26,#33221e)}
+  .card-img::after{background-image:radial-gradient(rgba(255,255,255,.14) 2px, transparent 2px)}
+
+  .processing{background:linear-gradient(160deg,#1f1826,#18222c)}
+  .proc-text{color:#ffe6f1}
+  .proc-bar{background:#241d2b;box-shadow:inset 0 2px 6px rgba(0,0,0,.5)}
+  .closing{background:linear-gradient(135deg,#1e3329,#1c2a38);color:#bfe6d5}
+  .oop-banner{color:#3a1f08}
+  .squiggle{color:#ff9dc0}
+  .price,.total-row strong,.line-price,.review cite,.reveal-card .big{color:#ff9dc0}
+  .logo-text em{color:#ff9dc0}
+  a{color:#ff9dc0}
+  .checklist li{border-left-color:var(--mint)}
 }
