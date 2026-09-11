@@ -11,6 +11,7 @@ const PRODUCTS = [
   { id:'eggs',    name:'Squirrel Eggs',emoji:'🥚',price:89.99,badge:'Dozen',      desc:'One dozen free-range squirrel eggs. Colors and eventual personalities may vary.' },
   { id:'slow-incubator',name:'Slow Incubator',emoji:'⏳',price:129.99,badge:'Budget',desc:'Hatches your squirrel eggs eventually. Affordable, patient and in absolutely no hurry.' },
   { id:'microwave-incubator',name:'Microwave Incubator',emoji:'⚡',price:499.99,badge:'Fastest',desc:'For premium rapid hatching. Microwave-fast, not an actual microwave. Please do not improvise.' },
+  { id:'joyce',   name:'Joyce',    emoji:'🐿️',price:799.99,badge:'Pre-Order',     desc:'You must be able to keep up with her large appetite. Warning: baby animals within slapping distance will be slapped. Delivery time pending because she was already released and we have to locate her.', action:'Pre-Order' },
 ];
 
 const CART_KEY = 'sq_cart';
