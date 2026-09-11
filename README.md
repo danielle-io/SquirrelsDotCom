@@ -8,6 +8,6 @@ Nothing here is for sale.
 
 Site: https://danielle-io.github.io/squirrels/
 
-Share: https://tinyurl.com/Squirrelsforsale or https://tinyurl.com/squirrelshere
+Share: https://tinyurl.com/SquirrelsHere
 
 Support KL: https://linktr.ee/cookieKL
