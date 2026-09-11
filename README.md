@@ -1,22 +1,13 @@
-# SquirrelsDotCom
+# The Squirrel Boutique
 
-A fake squirrel store that exists to redirect people who ask to buy wild squirrels during live streams.
+A fake squirrel shop for anyone who asks a wildlife rehabber if they can buy one of the babies.
 
-Visitors browse the "shop," add a squirrel to the cart, hit checkout, and instead of a payment form they land on a page explaining why squirrels don't belong in houses, what to do if they find a baby one, and how to support licensed rehabbers.
+The listings and cart are a joke. Checkout explains why wild squirrels are not pets, what to do when you find a baby squirrel, and how to help the rehabbers paying for their care.
+
+Nothing here is for sale.
+
+Site: https://danielle-io.github.io/squirrels/
+
+Share: https://tinyurl.com/Squirrelsforsale or https://tinyurl.com/squirrelshere
 
 Support KL: https://linktr.ee/cookieKL
-
-## Editing
-
-- The "why squirrels make lousy pets" list is in `checkout.html`. Each point is an `<li class="reason">` with an emoji, an `<h3>` and a `<p>`.
-- Photos go in `assets/`, then copy a `<figure class="shot">` block in the gallery section of `checkout.html`.
-- Products are the `PRODUCTS` array at the top of `script.js`.
-- Colors are the CSS variables at the top of `styles.css`.
-
-## Publishing
-
-Settings → Pages → Deploy from a branch → `main` / root.
-
-Live at https://danielle-io.github.io/SquirrelsDotCom/
-
-Photos used with permission. Nothing here is for sale.

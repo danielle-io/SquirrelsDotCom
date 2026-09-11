@@ -6,12 +6,12 @@ const PRODUCTS = [
   { id:'waffles', name:'Waffles',  emoji:'🐿️', price:399.99, badge:'Deluxe',      desc:'Flying squirrel. No, not a sugar glider.' },
   { id:'chonk',   name:'Big Chonk',emoji:'🐿️', price:459.99, badge:'Limited',     desc:'Absolute unit. Ships in a reinforced box. Good luck.' },
   { id:'frampton',name:'Frampton', emoji:'🐿️', price:349.99, badge:'Pre-Order',   desc:'Coming soon with his well-loved Frammock. Pre-chewed for maximum comfort.', action:'Pre-Order' },
-  { id:'mystery', name:'Mystery Squirrel',emoji:'🎁',price:299.99,badge:'Surprise',desc:"You won't know what you're getting. Could be sweet. Could be chaos. Probably both.", action:'Add Mystery Box' },
   { id:'grumbles',name:'Grumbles', emoji:'🐿️', price:49.99,  badge:'On Sale',     desc:'Deeply discounted because he growls and bites 24/7. All sales final.' },
-  { id:'eggs',    name:'Squirrel Eggs',emoji:'🥚',price:89.99,badge:'Dozen',      desc:'One dozen free-range squirrel eggs. Colors and eventual personalities may vary.', units:12, discountable:false },
-  { id:'slow-incubator',name:'Slow Incubator',emoji:'⏳',price:129.99,badge:'Budget',desc:'Hatches your squirrel eggs eventually. Affordable, patient and in absolutely no hurry.' },
-  { id:'microwave-incubator',name:'Microwave Incubator',emoji:'⚡',price:499.99,badge:'Fastest',desc:'For premium rapid hatching. Microwave-fast, not an actual microwave. Please do not improvise.' },
   { id:'joyce',   name:'Joyce',    emoji:'🐿️',price:799.99,badge:'Pre-Order',     desc:'You must be able to keep up with her large appetite. Warning: baby animals within slapping distance will be slapped. Delivery time pending because she was already released and we have to locate her.', action:'Pre-Order' },
+  { id:'mystery', name:'Mystery Squirrel',emoji:'🎁',price:299.99,badge:'Surprise',desc:"You won't know what you're getting. Could be sweet. Could be chaos. Probably both.", action:'Add Mystery Box' },
+  { id:'eggs',    name:'Squirrel Eggs',emoji:'🥚',price:89.99,badge:'Dozen',      desc:'One dozen free-range squirrel eggs. Colors and eventual personalities may vary.', units:12, discountable:false },
+  { id:'slow-incubator',name:'Slow Incubator',emoji:'⏳',price:129.99,badge:'Budget',desc:'Hatches your squirrel eggs eventually. Affordable, patient and in absolutely no hurry.', units:0, discountable:false },
+  { id:'microwave-incubator',name:'Microwave Incubator',emoji:'⚡',price:499.99,badge:'Fastest',desc:'For premium rapid hatching. Microwave-fast, not an actual microwave. Please do not improvise.', units:0, discountable:false },
 ];
 
 const CART_KEY = 'sq_cart';
@@ -70,7 +70,7 @@ function renderCart(){
 
   const unitCount = ids.reduce((sum, id) => {
     const p = PRODUCTS.find(x => x.id === id);
-    return sum + cart[id] * (p.units || 1);
+    return sum + cart[id] * (p.units ?? 1);
   }, 0);
 
   let subtotal = 0;

@@ -22,7 +22,11 @@ html{scroll-behavior:smooth}
   body{
     cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ctext x='2' y='31' font-size='30'%3E%F0%9F%8C%B0%3C/text%3E%3C/svg%3E") 6 4, auto;
   }
-  a,button,input,select,textarea{cursor:pointer}
+  body a,body button,body input,body select,body textarea{
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext x='1' y='25' font-size='24'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E") 5 3, pointer !important;
+  }
+  .drawer,.drawer *{cursor:default !important}
+  .drawer a,.drawer button,.drawer input,.drawer select,.drawer textarea{cursor:pointer !important}
 }
 
 body{
@@ -175,7 +179,7 @@ section{padding:62px 0}
 }
 .section-sub{text-align:center;color:#8a6a78;margin:14px 0 38px}
 .singleton-note{
-  max-width:720px;margin:-18px auto 34px;padding:13px 18px;text-align:center;
+  max-width:720px;margin:34px auto 0;padding:13px 18px;text-align:center;
   color:#6b3f1f;background:linear-gradient(135deg,var(--butter),var(--peach));
   border-radius:18px;font-weight:800;box-shadow:0 5px 0 rgba(255,179,122,.35);
 }
