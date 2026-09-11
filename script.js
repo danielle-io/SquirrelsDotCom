@@ -7,6 +7,7 @@ const PRODUCTS = [
   { id:'chonk',   name:'Big Chonk',emoji:'🐿️', price:459.99, badge:'Limited',     desc:'Absolute unit. Ships in a reinforced box. Good luck.' },
   { id:'frampton',name:'Frampton', emoji:'🐿️', price:349.99, badge:'Pre-Order',   desc:'Coming soon with his well-loved Frammock. Pre-chewed for maximum comfort.', action:'Pre-Order' },
   { id:'mystery', name:'Mystery Squirrel',emoji:'🎁',price:299.99,badge:'Surprise',desc:"You won't know what you're getting. Could be sweet. Could be chaos. Probably both.", action:'Add Mystery Box' },
+  { id:'grumbles',name:'Grumbles', emoji:'🐿️', price:49.99,  badge:'On Sale',     desc:'Deeply discounted because he growls and bites 24/7. All sales final.' },
 ];
 
 const CART_KEY = 'sq_cart';
