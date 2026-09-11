@@ -55,9 +55,9 @@ keepBtn.addEventListener('click', () => {
   }, 120);
 });
 
-const copyBtn = document.getElementById('copyLink');
-if (copyBtn){
-  const url = 'https://tinyurl.com/Squirrelsforsale';
+const copyBtns = document.querySelectorAll('.copy-link');
+copyBtns.forEach(copyBtn => {
+  const url = copyBtn.dataset.url;
   copyBtn.addEventListener('click', async () => {
     let ok = false;
     try {
@@ -80,4 +80,4 @@ if (copyBtn){
       copyBtn.classList.remove('copied');
     }, 2000);
   });
-}
+});

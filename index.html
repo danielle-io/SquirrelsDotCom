@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="styles.css?v=16">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐿️</text></svg>">
 </head>
 <body>
@@ -58,6 +58,7 @@
   <section id="shop">
     <h2 class="section-title">Our Squirrels</h2>
     <p class="section-sub">Every squirrel is unique. So is the state law you'd be breaking.</p>
+    <p class="singleton-note">🐿️ Squirrels should not be raised alone as singletons. They need age-appropriate squirrel companions and a licensed wildlife rehabilitator. Add more than one and save 1%. Egg dozens qualify, but their bulk price is excluded from the discount.</p>
     <div class="grid" id="productGrid"></div>
   </section>
 
@@ -97,7 +98,7 @@
   <div class="wrap">
     <p class="foot-logo">🐿️ The Squirrel Boutique</p>
     <p class="fine">*Returns not accepted. Wildlife is not a product. Please proceed to checkout.</p>
-    <p class="fine share-fine">Share this site: <a href="https://tinyurl.com/Squirrelsforsale">tinyurl.com/Squirrelsforsale</a></p>
+    <p class="fine share-fine">Share this site: <a href="https://tinyurl.com/Squirrelsforsale">tinyurl.com/Squirrelsforsale</a> or <a href="https://tinyurl.com/squirrelshere">tinyurl.com/squirrelshere</a></p>
     <p class="fine share-fine">Made with &lt;3 by <a href="https://www.tiktok.com/@codingsqt" target="_blank" rel="noopener">@codingsqt</a></p>
   </div>
 </footer>
@@ -110,6 +111,10 @@
   </div>
   <div class="drawer-body" id="cartItems"></div>
   <div class="drawer-foot">
+    <div class="discount-row" id="discountRow" hidden>
+      <span>1% multi-item discount <small>(eggs excluded)</small></span>
+      <strong id="discountAmount">-$0.00</strong>
+    </div>
     <div class="total-row"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
     <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Proceed to Checkout</button>
     <p class="foot-note">Secure checkout · You will not be charged</p>
@@ -118,6 +123,6 @@
 
 <div class="fly" id="fly" aria-hidden="true"></div>
 
-<script src="script.js?v=15"></script>
+<script src="script.js?v=16"></script>
 </body>
 </html>

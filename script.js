@@ -8,7 +8,7 @@ const PRODUCTS = [
   { id:'frampton',name:'Frampton', emoji:'🐿️', price:349.99, badge:'Pre-Order',   desc:'Coming soon with his well-loved Frammock. Pre-chewed for maximum comfort.', action:'Pre-Order' },
   { id:'mystery', name:'Mystery Squirrel',emoji:'🎁',price:299.99,badge:'Surprise',desc:"You won't know what you're getting. Could be sweet. Could be chaos. Probably both.", action:'Add Mystery Box' },
   { id:'grumbles',name:'Grumbles', emoji:'🐿️', price:49.99,  badge:'On Sale',     desc:'Deeply discounted because he growls and bites 24/7. All sales final.' },
-  { id:'eggs',    name:'Squirrel Eggs',emoji:'🥚',price:89.99,badge:'Dozen',      desc:'One dozen free-range squirrel eggs. Colors and eventual personalities may vary.' },
+  { id:'eggs',    name:'Squirrel Eggs',emoji:'🥚',price:89.99,badge:'Dozen',      desc:'One dozen free-range squirrel eggs. Colors and eventual personalities may vary.', units:12, discountable:false },
   { id:'slow-incubator',name:'Slow Incubator',emoji:'⏳',price:129.99,badge:'Budget',desc:'Hatches your squirrel eggs eventually. Affordable, patient and in absolutely no hurry.' },
   { id:'microwave-incubator',name:'Microwave Incubator',emoji:'⚡',price:499.99,badge:'Fastest',desc:'For premium rapid hatching. Microwave-fast, not an actual microwave. Please do not improvise.' },
   { id:'joyce',   name:'Joyce',    emoji:'🐿️',price:799.99,badge:'Pre-Order',     desc:'You must be able to keep up with her large appetite. Warning: baby animals within slapping distance will be slapped. Delivery time pending because she was already released and we have to locate her.', action:'Pre-Order' },
@@ -24,6 +24,8 @@ const cartBtn    = document.getElementById('cartBtn');
 const cartCount  = document.getElementById('cartCount');
 const cartItems  = document.getElementById('cartItems');
 const cartTotal  = document.getElementById('cartTotal');
+const discountRow = document.getElementById('discountRow');
+const discountAmount = document.getElementById('discountAmount');
 const checkout   = document.getElementById('checkoutBtn');
 const fly        = document.getElementById('fly');
 
@@ -61,15 +63,24 @@ function renderCart(){
 
   if (!ids.length){
     cartItems.innerHTML = `<div class="empty-cart"><span>🌰</span><p>Your cart is empty.<br>Go pick out a squirrel!</p></div>`;
+    discountRow.hidden = true;
     cartTotal.textContent = money(0);
     return;
   }
 
-  let total = 0;
+  const unitCount = ids.reduce((sum, id) => {
+    const p = PRODUCTS.find(x => x.id === id);
+    return sum + cart[id] * (p.units || 1);
+  }, 0);
+
+  let subtotal = 0;
+  let discountableSubtotal = 0;
   cartItems.innerHTML = ids.map(id => {
     const p = PRODUCTS.find(x => x.id === id);
     const qty = cart[id];
-    total += p.price * qty;
+    const lineTotal = p.price * qty;
+    subtotal += lineTotal;
+    if (p.discountable !== false) discountableSubtotal += lineTotal;
     return `
       <div class="line">
         <div class="line-img">${p.emoji}</div>
@@ -82,10 +93,14 @@ function renderCart(){
             <button data-inc="${id}" aria-label="Increase">+</button>
           </div>
         </div>
-        <div class="line-price">${money(p.price * qty)}</div>
+        <div class="line-price">${money(lineTotal)}</div>
       </div>`;
   }).join('');
-  cartTotal.textContent = money(total);
+
+  const discount = unitCount > 1 ? discountableSubtotal * 0.01 : 0;
+  discountRow.hidden = discount === 0;
+  discountAmount.textContent = '-' + money(discount);
+  cartTotal.textContent = money(subtotal - discount);
 }
 
 function flyToCart(btn, emoji){

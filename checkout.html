@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="styles.css?v=16">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐿️</text></svg>">
 </head>
 <body class="checkout-page">
@@ -150,6 +150,7 @@
         <li><strong>Don't feed it.</strong> Not milk, not water, not formula. Wrong food or aspiration kills more babies than the fall did.</li>
         <li><strong>Keep it warm, dark, and quiet.</strong> A box with a soft cloth and a heat source under half the box (heating pad on low, or a sock of rice warmed up).</li>
         <li><strong>Give mom a chance.</strong> If it's uninjured, warm it up and put it back at the base of the tree. Mothers will usually come get their babies.</li>
+        <li><strong>Don't raise it alone.</strong> Squirrels should not be raised as singletons. A licensed rehabber can place the baby with age-appropriate squirrel companions.</li>
         <li><strong>Find a licensed rehabber right away.</strong> Check out the app <a href="https://ahnow.org/" target="_blank" rel="noopener">Animal Help Now</a> to find help in your area.</li>
       </ul>
     </section>
@@ -208,8 +209,14 @@
       <h2>Pass it on 🔗</h2>
       <p class="share-intro">Someone else is about to ask where to buy a squirrel. Send them here instead.</p>
       <div class="share-box">
-        <code id="shareLink">tinyurl.com/Squirrelsforsale</code>
-        <button class="btn btn-primary" id="copyLink">Copy link</button>
+        <div class="share-option">
+          <code id="shareLink">tinyurl.com/Squirrelsforsale</code>
+          <button class="btn btn-primary copy-link" id="copyLink" data-url="https://tinyurl.com/Squirrelsforsale">Copy link</button>
+        </div>
+        <div class="share-option">
+          <code>tinyurl.com/squirrelshere</code>
+          <button class="btn btn-primary copy-link" data-url="https://tinyurl.com/squirrelshere">Copy link</button>
+        </div>
       </div>
     </section>
 
@@ -224,6 +231,6 @@
   </div>
 </div>
 
-<script src="checkout.js?v=15"></script>
+<script src="checkout.js?v=16"></script>
 </body>
 </html>

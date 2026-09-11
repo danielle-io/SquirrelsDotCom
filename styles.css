@@ -18,6 +18,13 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
+@media (pointer:fine){
+  body{
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ctext x='2' y='31' font-size='30'%3E%F0%9F%8C%B0%3C/text%3E%3C/svg%3E") 6 4, auto;
+  }
+  a,button,input,select,textarea{cursor:pointer}
+}
+
 body{
   margin:0;
   font-family:'Nunito',system-ui,sans-serif;
@@ -74,7 +81,7 @@ img{max-width:100%}
 }
 .nav{margin-left:auto;display:flex;gap:24px}
 .nav a{color:var(--bark);text-decoration:none;font-weight:800;font-size:.95rem;transition:color .2s,transform .2s;display:inline-block}
-.nav a:hover{color:var(--pink-deep);transform:translateY(-2px) rotate(-2deg)}
+.nav a:hover{color:var(--pink-deep)}
 .cart-btn{
   position:relative;border:0;cursor:pointer;
   background:linear-gradient(135deg,var(--pink),var(--grape));
@@ -167,6 +174,11 @@ section{padding:62px 0}
   background:linear-gradient(90deg,var(--pink),var(--butter),var(--mint));
 }
 .section-sub{text-align:center;color:#8a6a78;margin:14px 0 38px}
+.singleton-note{
+  max-width:720px;margin:-18px auto 34px;padding:13px 18px;text-align:center;
+  color:#6b3f1f;background:linear-gradient(135deg,var(--butter),var(--peach));
+  border-radius:18px;font-weight:800;box-shadow:0 5px 0 rgba(255,179,122,.35);
+}
 
 /* products */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:28px}
@@ -269,6 +281,13 @@ section{padding:62px 0}
 .close-x:hover{transform:rotate(90deg) scale(1.1)}
 .drawer-body{flex:1;overflow-y:auto;padding:16px 22px}
 .drawer-foot{padding:18px 22px 24px;border-top:3px dotted rgba(243,98,141,.3)}
+.discount-row{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-bottom:8px;color:#39725f;font-size:.86rem;font-weight:900;
+}
+.discount-row[hidden]{display:none}
+.discount-row small{display:block;font-size:.68rem;font-weight:700}
+.discount-row strong{font-family:'Fredoka',sans-serif;color:#39725f}
 .total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:1.05rem;font-weight:800;color:var(--bark)}
 .total-row strong{font-family:'Fredoka',sans-serif;font-size:1.5rem;color:var(--pink-deep)}
 .foot-note{text-align:center;font-size:.78rem;color:#a08894;margin:10px 0 0}
@@ -277,9 +296,7 @@ section{padding:62px 0}
 .line{
   display:flex;gap:12px;align-items:center;padding:12px;margin-bottom:10px;
   background:#fff;border-radius:18px;box-shadow:0 4px 14px rgba(243,98,141,.1);
-  animation:slideIn .35s cubic-bezier(.34,1.4,.44,1);
 }
-@keyframes slideIn{from{opacity:0;transform:translateX(24px) scale(.9)}to{opacity:1;transform:none}}
 .line-img{
   font-size:2rem;background:linear-gradient(140deg,#ffe0ec,#e6f6ff);
   border-radius:14px;width:54px;height:54px;display:grid;place-items:center;flex:none;
@@ -295,7 +312,10 @@ section{padding:62px 0}
 }
 .qty button:hover{transform:scale(1.18)}
 .qty span{font-weight:900;min-width:18px;text-align:center;color:var(--bark)}
-.line-price{font-weight:900;color:var(--pink-deep);white-space:nowrap}
+.line-price{
+  min-width:76px;text-align:right;font-weight:900;color:var(--pink-deep);
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
 
 /* fly-to-cart + burst */
 .fly{position:fixed;z-index:200;pointer-events:none;font-size:2.7rem;opacity:0}
@@ -557,19 +577,22 @@ section{padding:62px 0}
 }
 .share-intro{text-align:center;color:#7a5a68;max-width:52ch;margin:0 auto 22px}
 .share-box{
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;
+  display:grid;gap:12px;
   background:#fff;border-radius:24px;padding:20px;box-shadow:var(--shadow);
 }
+.share-option{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}
 .share-box code{
   font-family:'Nunito',monospace;font-weight:800;font-size:1rem;
   color:var(--pink-deep);background:#fff0f6;
   padding:12px 18px;border-radius:999px;word-break:break-all;
 }
-#copyLink.copied{background:linear-gradient(135deg,var(--mint),#5ec9a8);box-shadow:0 6px 0 rgba(94,201,168,.4)}
+.copy-link.copied{background:linear-gradient(135deg,var(--mint),#5ec9a8);box-shadow:0 6px 0 rgba(94,201,168,.4)}
 .share-fine{margin-top:8px}
 .share-fine a{color:#fff;font-weight:800}
 @media (prefers-color-scheme: dark){
   .share-intro{color:#c5b3c0}
   .share-box{background:#241d2b}
   .share-box code{background:#332430;color:#ff9dc0}
+  .singleton-note{color:#5a2f12}
+  .discount-row,.discount-row strong{color:#9ee2c9}
 }
